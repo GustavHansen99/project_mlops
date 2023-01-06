@@ -5,7 +5,7 @@
 ### Overall goal of the project
 The goal of this project is to use image classification model to solve a binary classification task to predict whether a brain scan depicts a brain with a tumor or no. 
 
-### What framework are you going to use (Kornia, Transformer, Pytorch-Geometrics)
+### What framework are you going to use (Pytorch Image Models, Transformer, Pytorch-Geometrics)
 Since we chose an image classification problem, we plan to use the to use <a href="https://github.com/rwightman/pytorch-image-models" target="_blank">Pytorch Image Models</a>. This framework provides 70 different image models for various computer vision tasks (classification, segmentation, etc). 
 
 ### How to you intend to include the framework into your project
