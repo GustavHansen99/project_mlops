@@ -1,6 +1,6 @@
 # Final Project MLOps
 ==============================
-## Project desctiption - Image Classification for Brain Tumors
+## Project description - Image Classification for Brain Tumors
 
 ### Overall goal of the project
 The goal of this project is to use image classification model to solve a binary classification task to predict whether a brain scan depicts a brain with a tumor or no. 
