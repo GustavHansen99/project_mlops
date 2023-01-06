@@ -15,7 +15,7 @@ We will use one of the models from the framework with pretrained weights to comp
 We are going to use a <a href="https://www.kaggle.com/datasets/preetviradiya/brian-tumor-dataset" target="_blank">Brain tumor dataset</a> obtained from kaggle. The dataset is comprised of brain scans, split into healthy brains (0) and brains with tumors (1). The dataset we chose is quite simple since the objective of the project is to employ the techniques shown in the course and not the project itself. 
 
 ### What deep learning models do you expect to use
-The intention is to use a model with pretrained weights and train it on the dataset above. As a first approach we will use the <a href="https://huggingface.co/docs/timm/models/efficientnet" target="_blank">EfficientNet</a>. If 
+The intention is to use a model with pretrained weights and train it on the dataset above. As a first approach we will use the <a href="https://huggingface.co/docs/timm/models/efficientnet" target="_blank">EfficientNet</a>.
 
 --------
 
