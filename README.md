@@ -1,56 +1,21 @@
-Final Project MLOps
+# Final Project MLOps
 ==============================
+## Project description - Image Classification for Brain Tumors
 
-This is the repository cfor the final project in Machine Learning Operations January 2023
+### Overall goal of the project
+The goal of this project is to use image classification model to solve a binary classification task to predict whether a brain scan depicts a brain with a tumor or no. 
 
-Project Organization
-------------
+### What framework are you going to use (Kornia, Transformer, Pytorch-Geometrics)
+Since we chose an image classification problem, we plan to use the to use <a href="https://github.com/rwightman/pytorch-image-models" target="_blank">Pytorch Image Models</a>. This framework provides 70 different image models for various computer vision tasks (classification, segmentation, etc). 
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+### How to you intend to include the framework into your project
+We will use one of the models from the framework with pretrained weights to complete the task. We will further train the weights with our own dataset in order to get better accuracy for our task. 
 
+### What data are you going to run on (initially, may change)
+We are going to use a <a href="https://www.kaggle.com/datasets/preetviradiya/brian-tumor-dataset" target="_blank">Brain tumor dataset</a> obtained from kaggle. The dataset is comprised of brain scans, split into healthy brains (0) and brains with tumors (1). The dataset we chose is quite simple since the objective of the project is to employ the techniques shown in the course and not the project itself. 
+
+### What deep learning models do you expect to use
+The intention is to use a model with pretrained weights and train it on the dataset above. As a first approach we will use the <a href="https://huggingface.co/docs/timm/models/efficientnet" target="_blank">EfficientNet</a>.
 
 --------
 
