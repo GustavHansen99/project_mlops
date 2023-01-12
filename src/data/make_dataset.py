@@ -21,14 +21,44 @@ def main(input_filepath, output_filepath):
         logger.exception('Input folder does not exist')
         raise Exception('Input folder does not exist')
 
-    if not os.path.exists(output_filepath):
-        logger.exception('Output folder does not exist')
-        raise Exception('Output folder does not exist')
+    if not os.path.exists(os.path.join(output_filepath, 'train')):
+        logger.exception('Output train folder does not exist')
+        raise Exception('Output train folder does not exist')
 
-    for root, dirs, files in os.walk(input_filepath):
+    if not os.path.exists(os.path.join(output_filepath, 'test')):
+        logger.exception('Output test folder does not exist')
+        raise Exception('Output test folder does not exist')
+
+    if not os.path.exists(os.path.join(output_filepath, 'validate')):
+        logger.exception('Output validation folder does not exist')
+        raise Exception('Output validation folder does not exist')
+
+    images_healthy = []
+    images_tumor = []
+    for root, _, files in os.walk(input_filepath):
         for file in files:
             if 'jpg' in file:
-                shutil.copy2(os.path.join(root, file), os.path.join(output_filepath, file))
+                if 'NotCancer' in file:
+                    images_healthy.append([root, file])
+                else:
+                    images_tumor.append([root, file])
+
+    for i in range(len(images_healthy)):
+        if i < 0.8*len(images_healthy):
+            shutil.copy2(os.path.join(images_healthy[i][0], images_healthy[i][1]), os.path.join(output_filepath, 'train', images_healthy[i][1]))
+        if i >=0.8*len(images_healthy) and i < 0.9*len(images_healthy):
+            shutil.copy2(os.path.join(images_healthy[i][0], images_healthy[i][1]), os.path.join(output_filepath, 'validate', images_healthy[i][1]))
+        if i >= 0.9*len(images_healthy):
+            shutil.copy2(os.path.join(images_healthy[i][0], images_healthy[i][1]), os.path.join(output_filepath, 'test', images_healthy[i][1]))
+
+    for i in range(len(images_tumor)):
+        if i < 0.8*len(images_tumor):
+            shutil.copy2(os.path.join(images_tumor[i][0], images_tumor[i][1]), os.path.join(output_filepath, 'train', images_tumor[i][1]))
+        if i >=0.8*len(images_tumor) and i < 0.9*len(images_tumor):
+            shutil.copy2(os.path.join(images_tumor[i][0], images_tumor[i][1]), os.path.join(output_filepath, 'validate', images_tumor[i][1]))
+        if i >= 0.9*len(images_tumor):
+            shutil.copy2(os.path.join(images_tumor[i][0], images_tumor[i][1]), os.path.join(output_filepath, 'test', images_tumor[i][1]))
+                
 
     logger.info('Process ended succesfully')
 if __name__ == '__main__':
