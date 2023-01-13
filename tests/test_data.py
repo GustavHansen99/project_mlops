@@ -7,6 +7,10 @@ from src.data.dataset import BTDataset
 def test_data():
     """
     Pytest to check that our data collection and transform work on our raw data
+    We check that:
+        - The correct number of samples are collected
+        - The data are tensors
+        - That the data has been transformed correctly
     """
     data_path_BT = "data/raw/BrainTumorDataSet/Brain_Tumor/"
     data_path_H = "data/raw/BrainTumorDataSet/Healthy/"
