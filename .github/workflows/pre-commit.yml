@@ -1,4 +1,4 @@
-name: pre-commit (flake8, isort, black, ...)
+name: Pre-commit (flake8, isort, black, ...)
 
 on:
   push:
