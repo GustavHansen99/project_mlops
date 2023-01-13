@@ -5,6 +5,9 @@ from src.data.dataset import BTDataset
 
 
 def test_data():
+    """
+    Pytest to check that our data collection and transform work on our raw data
+    """
     data_path_BT = "data/raw/BrainTumorDataSet/Brain_Tumor/"
     data_path_H = "data/raw/BrainTumorDataSet/Healthy/"
 
