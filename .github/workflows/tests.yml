@@ -2,7 +2,7 @@ name: "Run tests (pytest)"
 
 on:
   push:
-    branches: [ main, unittesting ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 

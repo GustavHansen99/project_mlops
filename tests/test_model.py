@@ -26,7 +26,3 @@ def test_forward_pass():
     assert output2.shape == torch.Size(
         [batch2, 2]
     ), "The output shape of a forward pass is incorrect"
-
-
-if __name__ == "__main__":
-    test_forward_pass()
