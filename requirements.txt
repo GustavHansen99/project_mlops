@@ -5,7 +5,6 @@
 click
 Sphinx
 coverage
-# awscli
 flake8==5.0.*
 flake8-black==0.3.*
 flake8-import-order==0.18.*
@@ -14,10 +13,18 @@ isort==5.11.*
 python-dotenv>=0.5.1
 numpy==1.22.4
 Markdown==3.4.1
-omegaconf==2.3.0
 Pillow==9.4.0
-pytorch_lightning==1.8.6
 setuptools==65.5.0
+
+# extra requirements
+omegaconf==2.3.0
+pytorch-lightning==1.8.6
 timm==0.6.12
+
+# pytorch requirements
 torch==1.13.1
 torchvision==0.14.1
+torchaudio==0.13.1
+
+
+--find-links https://download.pytorch.org/whl/torch_stable.html
