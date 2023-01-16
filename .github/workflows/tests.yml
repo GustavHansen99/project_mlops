@@ -57,3 +57,5 @@ jobs:
 
     - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v2
+      with:
+        files: /Users/runner/work/project_mlops/project_mlops/coverage.xml, /home/runner/work/project_mlops/project_mlops/coverage.xml
