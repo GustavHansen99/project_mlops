@@ -54,7 +54,6 @@ jobs:
         pip install pytest
         coverage run -m pytest tests/
         coverage xml -i --omit=*/tests/*
-        ls /home/runner/work/project_mlops/project_mlops/
 
     - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v2
