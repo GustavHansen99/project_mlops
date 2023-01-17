@@ -1,0 +1,4 @@
+hyperparameters:
+    resize_x: 128
+    resize_y: 128
+    checkpoint_path: 'lightning_logs/version_1/checkpoints/epoch=4-step=555.ckpt'
