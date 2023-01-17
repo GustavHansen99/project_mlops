@@ -8,4 +8,6 @@ COPY src/ src/
 COPY setup.py setup.py
 
 
-RUN pip install -r requirements.txt --no-cache-dir
+RUN pip install --upgrade pip && \
+    pip install wheel setuptools h5py typing && \
+    pip install -r requirements.txt --no-cache-dir
