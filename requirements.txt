@@ -24,9 +24,9 @@ pytorch-lightning==1.8.6
 timm==0.6.12
 
 # pytorch requirements
-torch==1.13.1
-torchvision==0.14.1
-torchaudio==0.13.1
+#torch==1.13.1
+#torchvision==0.14.1
+#torchaudio==0.13.1
 
 
---find-links https://download.pytorch.org/whl/torch_stable.html
+#--find-links https://download.pytorch.org/whl/torch_stable.html
