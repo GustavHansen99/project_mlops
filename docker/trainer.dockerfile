@@ -10,3 +10,6 @@ RUN pip install --upgrade pip && \
 
 COPY src/ src/
 COPY setup.py setup.py
+
+# local package
+RUN pip install -e .
