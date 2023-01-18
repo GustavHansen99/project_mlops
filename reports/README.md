@@ -193,7 +193,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 7 fill here ---
+In total we have implemented 3 tests. Specifically, we conduct tests related to our data, model and training. Primarily we are testing that the data collection and transformation works as intended, that the model produces the expected output given an input, and that our training and validation improves the model and that both classes are present. In this way, we try to ensure that the "vulnerable" parts of our developed code does not break when making changes to the various parts.
 
 ### Question 8
 
@@ -208,7 +208,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 8 fill here ---
+The total code coverage of our code is 59%, excluding the test scripts themselves, and including all of our source code. As this percentage reflects, our tests are not exhaustive and does not capture all parts of our code. However, we are aware of this, and one way to the coverage would be to cover more of the training and prediction aspects of our code. We are hence far from 100% coverage of our code, and even if we were it is difficult to completely trust the coverage score as an indicator of the state of a codebase. Code coverage allows us to identify aspects of our code that is not captured by our tests, but does not alone ensure good quality of either the code nor the tests. One still needs to look at the quality of the tests to ensure error free code. Hence, code coverage is only an indicator of the lines that are covered by tests, but not how they are covered.
 
 ### Question 9
 
@@ -223,7 +223,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 9 fill here ---
+Throughout our project we relied heavily on both branches and PRs. We created branches for every part of the project that needed work to easily be able to work independently of each other while not harming the main branch. This also allowed us to independently be responsible for the code we each of us developed. Then in order to merge the created code from a branch, we created a PR with comments highlighting the most essential information needed for the other group members to review the code and approve a merging of the branch and main branch. In this way, it was trivial for us to develop code on the same project by dividing the tasks in branches.
 
 ### Question 10
 
