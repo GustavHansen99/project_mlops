@@ -4,10 +4,12 @@ RUN apt update
 
 WORKDIR /
 COPY requirements.txt requirements.txt
+
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt --no-cache-dir
+
 COPY src/ src/
 COPY setup.py setup.py
 
-
-RUN pip install --upgrade pip && \
-    pip install wheel setuptools h5py typing && \
-    pip install -r requirements.txt --no-cache-dir
+# local package
+RUN pip install -e .

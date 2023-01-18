@@ -1,5 +1,4 @@
 import os
-import sys
 
 import pytorch_lightning as pl
 from model import EfficientNet
@@ -8,8 +7,6 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 
 from src.data.dataset import BTDataset
-
-sys.path.insert(0, os.path.join(os.getcwd()))
 
 
 def evaluate(config):
