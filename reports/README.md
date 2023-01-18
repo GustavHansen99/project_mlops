@@ -163,7 +163,7 @@ end of the project.
 > *experiments.*
 > Answer:
 
---- question 5 fill here ---
+We have removed the folders: docs, models, notebooks and references since ...
 
 ### Question 6
 
