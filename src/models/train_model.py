@@ -52,6 +52,8 @@ def train(config):
     wandb_logger = WandbLogger(
         entity="g55_project_mlops", project="mlops_project"
     )
+    wandb_logger.experiment.config.update(config)
+
     if config.hyperparameters.checkpoint_path:
         checkpoint_callback = ModelCheckpoint(
             dirpath="src/models/checkpoints/",
