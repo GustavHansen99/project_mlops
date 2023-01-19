@@ -20,6 +20,7 @@ setuptools==65.5.0
 omegaconf==2.3.0
 pytorch-lightning==1.8.6
 timm==0.6.12
+wandb==0.13.9
 protobuf==3.20.1
 
 # pytorch requirements
