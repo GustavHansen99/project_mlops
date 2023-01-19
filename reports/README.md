@@ -321,7 +321,7 @@ An aspect of W&B that we did not utilize for this project is that it is possible
 >
 > Answer:
 
-For this project we have made extensive use of Docker and the strengths it provide us to develop containerized code generalizable to other machines. We have developed several docker images, where especially two are interesting: one for training the model, and one for deployment using FastAPI. After building the images running the them is once again based on the parameters specified in our config files, meaning that for example to run the training docker image is done by `docker run trainer_latest`, does not require extra argparsed arguments due to it all being represented in the config file. [Link to docker file](https://github.com/GustavHansen99/project_mlops/blob/report_writing/docker/trainer.dockerfile).
+For this project we have made extensive use of Docker and the strengths it provide us to develop containerized code generalizable to other machines. We have developed several docker images, where especially two are interesting: one for training the model, and one for deployment using FastAPI. After building the images running the them is once again based on the parameters specified in our config files, meaning that for example to run the training docker image locally is done by `docker run trainer_latest`, does not require extra argparsed arguments due to it all being represented in the config file. Running the training image on the cloud is done by `docker run --rm -it --shm-size=8G --gpus all --device /dev/nvidiactl --device /dev/nvidia0 gcr.io/dtumlops-project-group-55/trainer:latest`. [Link to docker file](https://github.com/GustavHansen99/project_mlops/blob/report_writing/docker/trainer.dockerfile).
 
 ### Question 16
 
@@ -336,7 +336,7 @@ For this project we have made extensive use of Docker and the strengths it provi
 >
 > Answer:
 
---- question 16 fill here ---
+When encountering bugs each group member handled the approach to solve it differently. Some of us primarily solved the bugs using the built-in python debugger, while others used the debugger from VSCode. In this way, we were able to solve the appearing bugs and write working code. We also tried doing a single profiling run on the forward pass of our model which showed that in the beginning our data was not stored as tensors which was hence suboptimal considering performance.
 
 ## Working in the cloud
 
