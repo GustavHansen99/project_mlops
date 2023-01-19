@@ -273,7 +273,7 @@ The continuous CI of this project can be considered divided into 2 aspects: one 
 >
 > Answer:
 
---- question 12 fill here ---
+To configure experiments we made use of configuration files containing the relevant hyperparameters and information needed. For example, we define a configuration for training that contains the epochs, learning rate, batch size, etc. and use this to keep track of our experiment variables. Hence running an experiment would be as simple as defining the respective configuration file in the [config](https://github.com/GustavHansen99/project_mlops/tree/main/config) folder, and running `python script.py`. We considered using argparser, however this approach lacks the ability to store and keep track more accurately, and one might lose essential information hereof.
 
 ### Question 13
 
@@ -288,7 +288,7 @@ The continuous CI of this project can be considered divided into 2 aspects: one 
 >
 > Answer:
 
---- question 13 fill here ---
+In order to ensure reproducible experiments, we made use of config files. Whenever an experiment is run the respective configuration file is used as the variable values. Based on these values the script is run and if it a training script, we not only log the performance of the experiment, but also a series of files related to reproducibility: all configuration values, a requirements.txt file, and a log showing the model size and parameters. To reproduce an experiment, it is therefore fairly easy to setup an experiment with an identical configuration file, and achieve the reported results. By using a random seed, one would be able to ensure that randomness in weight initialization for example, does not alter the results between diffrent experiments.
 
 ### Question 14
 
