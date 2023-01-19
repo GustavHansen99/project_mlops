@@ -79,9 +79,9 @@ end of the project.
 * [X] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [X] Create a trigger workflow for automatically building your docker images
 * [ ] Get your model training in GCP using either the Engine or Vertex AI
-* [X] Create a FastAPI application that can do inference using your model
+* [ ] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
-* [X] Deploy your model in GCP using either Functions or Run as the backend
+* [ ] Deploy your model in GCP using either Functions or Run as the backend
 
 ### Week 3
 
