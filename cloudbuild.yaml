@@ -1,0 +1,11 @@
+steps:
+   - name: 'gcr.io/cloud-builders/docker'
+     args: [
+                'build',
+                '-f', 'docker/trainer.dockerfile',
+                '-t', 'gcr.io/dtumlops-project-group-55/trainer:latest',
+                '--cache-from', 'gcr.io/dtumlops-project-group-55/trainer:latest',
+                '.'
+            ]
+   - name: 'gcr.io/cloud-builders/docker'
+     args: ['push', 'gcr.io/dtumlops-project-group-55/trainer:latest']

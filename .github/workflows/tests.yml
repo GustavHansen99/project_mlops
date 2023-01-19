@@ -47,7 +47,14 @@ jobs:
     - name: Get data
       run: dvc pull
 
-    - name: Test with pytest
+    - name: Run tests and Generate Coverage Report
       run: |
+        pip install coverage
         pip install pytest
-        pytest -v
+        coverage run -m pytest tests/
+        coverage xml -i --omit=*/tests/*
+
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        files: /Users/runner/work/project_mlops/project_mlops/coverage.xml, /home/runner/work/project_mlops/project_mlops/coverage.xml
