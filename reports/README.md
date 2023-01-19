@@ -56,7 +56,7 @@ end of the project.
 * [X] Create the initial file structure using cookiecutter
 * [X] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
 * [X] Add a model file and a training script and get that running
-* [ ] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
+* [X] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
 * [X] Remember to comply with good coding practices (`pep8`) while doing the project
 * [ ] Do a bit of code typing and remember to document essential parts of your code
 * [X] Setup version control for your data or part of your data
@@ -94,9 +94,9 @@ end of the project.
 
 ### Additional
 
-* [ ] Revisit your initial project description. Did the project turn out as you wanted?
-* [ ] Make sure all group members have a understanding about all parts of the project
-* [ ] Uploaded all your code to github
+* [X] Revisit your initial project description. Did the project turn out as you wanted?
+* [X] Make sure all group members have a understanding about all parts of the project
+* [X] Uploaded all your code to github
 
 ## Group information
 
@@ -321,7 +321,7 @@ An aspect of W&B that we did not utilize for this project is that it is possible
 >
 > Answer:
 
---- question 15 fill here ---
+For this project we have made extensive use of Docker and the strengths it provide us to develop containerized code generalizable to other machines. We have developed several docker images, where especially two are interesting: one for training the model, and one for deployment using FastAPI. After building the images running the them is once again based on the parameters specified in our config files, meaning that for example to run the training docker image is done by `docker run trainer_latest`, does not require extra argparsed arguments due to it all being represented in the config file. [Link to docker file](https://github.com/GustavHansen99/project_mlops/blob/report_writing/docker/trainer.dockerfile).
 
 ### Question 16
 
