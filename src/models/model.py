@@ -1,3 +1,5 @@
+from typing import Optional
+
 import timm
 import torch
 from pytorch_lightning import LightningModule
@@ -6,7 +8,11 @@ from torch import nn, optim
 
 class EfficientNet(LightningModule):
     def __init__(
-        self, lr=1e-3, pretrained=True, num_classes=2, checkpoint_path=False
+        self,
+        lr: Optional[float] = 1e-3,
+        pretrained: Optional[bool] = True,
+        num_classes: Optional[int] = 2,
+        checkpoint_path: Optional[bool] = False,
     ):
         super().__init__()
 
