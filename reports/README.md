@@ -352,7 +352,7 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
---- question 17 fill here ---
+We used the following services: Compute Engine, Bucket, Container Registry, Build and Run. Compute Engine is a google cloud service that enables us to create and run virtual machines on Google's infrastructure. Bucket is used as storage space for the project. Container registry is used to store images that we create. Cloud build is used to build the images after we push changes to the main branch of our github repository. Cloud Run is used to run  our FastAPI application for inference.
 
 ### Question 18
 
@@ -376,7 +376,7 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
---- question 19 fill here ---
+[this figure](figures/bucket55.png)
 
 ### Question 20
 
@@ -385,7 +385,7 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
---- question 20 fill here ---
+[this figure](figures/registry55.png)
 
 ### Question 21
 
@@ -394,7 +394,7 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
---- question 21 fill here ---
+[this figure](figures/build55.png)
 
 ### Question 22
 
@@ -410,7 +410,7 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
---- question 22 fill here ---
+For the deployment of our model we wrapped it into an application using FastAPI. First, we tried serving the application locally using uvicorn, which worked.  Then, we containerised the application and tried to run the image locally, which also worked. As a last step, we deployed the application to the cloud using Cloud Run. You can access the application throught the following command: "curl -X POST -F "data=@<image/path>" https://brain-scan-eval-xm27t4qwiq-lz.a.run.app/infer/". In the json response you get, the key "tumor" shows if the image you sent showcases a brain with a tumor (True) or not (False).
 
 ### Question 23
 
@@ -425,7 +425,7 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
---- question 23 fill here ---
+We did not manage to implement monitoring during our development cycle. We would like to have monitoring implemented so that, over time, we could collect information about how well our application behaved. This can include identification of problems of our application (errors and logs) and performance issues, such as speed during high traffic periods. Also, we could collect more datapoints for further training and generalization of our model.
 
 ### Question 24
 
@@ -439,7 +439,7 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
---- question 24 fill here ---
+All three members used less than 20 dollars of credit during development. The most expensive service was Compute Engine since it used a VM with GPU that costs much more than everything else.
 
 ## Overall discussion of project
 
