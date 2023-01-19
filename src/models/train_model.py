@@ -3,6 +3,8 @@ import os
 import pytorch_lightning as pl
 from model import EfficientNet
 from omegaconf import OmegaConf
+from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
+from pytorch_lightning.loggers import WandbLogger
 from torch.utils.data import DataLoader
 from torchvision import transforms
 
@@ -47,15 +49,46 @@ def train(config):
         num_workers=config.hyperparameters.dl_workers,
     )
 
-    # Initialize trainer
-    if config.hyperparameters.gpu:
-        trainer = pl.Trainer(
-            max_epochs=config.hyperparameters.epochs,
-            accelerator="gpu",
-            devices=1,
+    wandb_logger = WandbLogger(
+        entity="g55_project_mlops", project="mlops_project"
+    )
+    wandb_logger.experiment.config.update(config)
+
+    if config.hyperparameters.checkpoint_path:
+        checkpoint_callback = ModelCheckpoint(
+            dirpath="src/models/checkpoints/",
+            monitor="validation_loss",
+            mode="min",
         )
+        early_stop = EarlyStopping(monitor="validation_loss", mode="min")
+        # Initialize trainer
+        if config.hyperparameters.gpu:
+            trainer = pl.Trainer(
+                callbacks=[checkpoint_callback, early_stop],
+                max_epochs=config.hyperparameters.epochs,
+                accelerator="gpu",
+                devices=1,
+                logger=wandb_logger,
+            )
+        else:
+            trainer = pl.Trainer(
+                callbacks=[checkpoint_callback, early_stop],
+                max_epochs=config.hyperparameters.epochs,
+                logger=wandb_logger,
+            )
     else:
-        trainer = pl.Trainer(max_epochs=config.hyperparameters.epochs)
+        # Initialize trainer
+        if config.hyperparameters.gpu:
+            trainer = pl.Trainer(
+                max_epochs=config.hyperparameters.epochs,
+                accelerator="gpu",
+                devices=1,
+                logger=wandb_logger,
+            )
+        else:
+            trainer = pl.Trainer(
+                max_epochs=config.hyperparameters.epochs, logger=wandb_logger
+            )
 
     # Training
     trainer.fit(model, train_set, validation_set)

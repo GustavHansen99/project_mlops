@@ -87,5 +87,8 @@ target/
 
 # Mypy cache
 .mypy_cache/
+
+# project specifics
 /data
 /lightning_logs
+/wandb
