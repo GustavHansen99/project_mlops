@@ -8,7 +8,7 @@ hyperparameters:
     validate_path: 'data/processed/validate/'
     gpu: True
     batch_size: 32
-    dl_workers: 8
+    dl_workers: 4
 
 transforms:
     resize_x: 128
