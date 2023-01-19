@@ -1,19 +1,18 @@
 import timm
-
-from torch import nn, optim
 import torch
-
 from pytorch_lightning import LightningModule
+from torch import nn, optim
+
 
 class EfficientNet(LightningModule):
-    def __init__(self, lr=1e-3, pretrained=True, num_classes=2, checkpoint_path=False):
+    def __init__(
+        self, lr=1e-3, pretrained=True, num_classes=2, checkpoint_path=False
+    ):
         super().__init__()
 
         self.efficientNet = timm.create_model(
-            'efficientnet_b0',
-            pretrained=pretrained, 
-            num_classes=num_classes
-            )
+            "efficientnet_b0", pretrained=pretrained, num_classes=num_classes
+        )
 
         self.criterium = nn.CrossEntropyLoss()
         self.lr = lr
@@ -32,14 +31,28 @@ class EfficientNet(LightningModule):
 
         # Log loss
         loss = self.criterium(y_hat, y)
-        self.log("train_loss", loss, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(
+            "train_loss",
+            loss,
+            on_step=False,
+            on_epoch=True,
+            prog_bar=True,
+            logger=True,
+        )
 
         # Log accuracy
         ps = torch.exp(y_hat)
-        equality = (y.data == ps.max(1)[1])
+        equality = y.data == ps.max(1)[1]
         accuracy = equality.type_as(torch.FloatTensor()).mean()
-        self.log("train_acc", accuracy, on_step=False, on_epoch=True, prog_bar=True, logger=True),
-        
+        self.log(
+            "train_acc",
+            accuracy,
+            on_step=False,
+            on_epoch=True,
+            prog_bar=True,
+            logger=True,
+        ),
+
         return loss
 
     def validation_step(self, batch, batch_idx):
@@ -52,10 +65,10 @@ class EfficientNet(LightningModule):
 
         # Log accuracy
         ps = torch.exp(y_hat)
-        equality = (y.data == ps.max(1)[1])
+        equality = y.data == ps.max(1)[1]
         accuracy = equality.type_as(torch.FloatTensor()).mean()
         self.log("validation_acc", accuracy, prog_bar=True, logger=True),
-    
+
     def test_step(self, batch, batch_idx):
         x, y = batch
         y_hat = self(x)
@@ -66,7 +79,6 @@ class EfficientNet(LightningModule):
 
         # Log accuracy
         ps = torch.exp(y_hat)
-        equality = (y.data == ps.max(1)[1])
+        equality = y.data == ps.max(1)[1]
         accuracy = equality.type_as(torch.FloatTensor()).mean()
         self.log("test_acc", accuracy, prog_bar=True, logger=True),
-    
