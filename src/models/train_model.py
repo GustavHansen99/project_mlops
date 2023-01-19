@@ -1,6 +1,8 @@
 import os
+from typing import Optional
 
 import pytorch_lightning as pl
+from google.cloud import storage
 from model import EfficientNet
 from omegaconf import OmegaConf
 from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
@@ -9,6 +11,22 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 
 from src.data.dataset import BTDataset
+
+_BUCKET_NAME = "artifacts_group_55"
+
+
+def _create_bucket_folder(
+    path: str, bucket: Optional[str] = _BUCKET_NAME
+) -> None:
+    """Creates a folder inside the bucket"""
+
+    gcs_client = storage.Client()
+    bucket = gcs_client.get_bucket(bucket)
+    blob = bucket.blob(path)
+
+    blob.upload_from_string(
+        "", content_type="application/x-www-form-urlencoded;charset=UTF-8"
+    )
 
 
 def train(config):
@@ -56,6 +74,7 @@ def train(config):
 
     if config.hyperparameters.checkpoint_path:
         save_folder = config.data.bucket + "/" + str(config.experiment_id)
+        _create_bucket_folder(path=save_folder)
         checkpoint_callback = ModelCheckpoint(
             dirpath=save_folder,
             monitor="validation_loss",
