@@ -10,7 +10,7 @@ from torchvision import transforms
 
 from src.models.model import EfficientNet
 
-BUCKET_NAME = "group-55-dtumlops"
+BUCKET_NAME = "artifacts_group_55"
 MODEL_FILE = "best_model.ckpt"
 
 client = storage.Client()
