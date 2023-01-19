@@ -16,7 +16,6 @@ Markdown==3.4.1
 Pillow==9.4.0
 setuptools==65.5.0
 fsspec[gcs]
-google-cloud-storage
 
 # extra requirements
 omegaconf==2.3.0
