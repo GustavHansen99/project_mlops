@@ -15,14 +15,9 @@ MODEL_FILE = "best_model.ckpt"
 
 client = storage.Client()
 bucket = client.get_bucket(BUCKET_NAME)
-blob = bucket.get_blob(MODEL_FILE)
-blob.download_to_filename("best_model.ckpt")
 
 # Start application
 app = FastAPI()
-
-# Load model
-model = EfficientNet.load_from_checkpoint("best_model.ckpt")
 
 # Transform for inference
 transform = transforms.Compose(
@@ -55,6 +50,11 @@ async def cv_model(data: UploadFile = File(...)):
         image.write(content)
         image.close()
 
+    # Load model
+    blob = bucket.get_blob(MODEL_FILE)
+    blob.download_to_filename("best_model.ckpt")
+    model = EfficientNet.load_from_checkpoint("best_model.ckpt")
+
     # Read image and infer
     image = Image.open("image.jpg").convert("RGB")
     y_hat = model(transform(image).unsqueeze(0))
@@ -79,4 +79,4 @@ async def cv_model(data: UploadFile = File(...)):
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=80)
+    uvicorn.run("main:app", host="localhost", port=80)
