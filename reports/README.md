@@ -305,7 +305,8 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
---- question 14 fill here ---
+As seen in [this figure](figures/project_wandb.png), we have used W&B to track our experiments for this project. In this figure, we show a series of some of the experiments that we have tracked using W&B, and from this we have chosen to monitor metrics such as training loss, training accuracy, validation loss, validation accuracy. From this, we clearly observe a tendency in our experiments that the pre-trained model we use contain weights that make it start at a preferable initial state (compared to starting from scratch) since most experiments even in the beginning seem to perform fairly acceptable. Hence using W&B we are able to get a clear overview of how our experiments turn out and easily compare the logged metrics across experiments as well.
+An aspect of W&B that we did not utilize for this project is that it is possible to log other things than numeric metrics, such as images. Since our project uses images as its data, it would have been interesting to log some of the training data and the predicted class in order for us to see the model improve over time. However, as discussed, we chose to focus on the more classic performance metrics for training and evaluating models.
 
 ### Question 15
 
@@ -352,7 +353,7 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
-We used the following services: Compute Engine, Bucket, Container Registry, Build and Run. Compute Engine is a google cloud service that enables us to create and run virtual machines on Google's infrastructure. Bucket is used as storage space for the project. Container registry is used to store images that we create. Cloud build is used to build the images after we push changes to the main branch of our github repository. Cloud Run is used to run  our FastAPI application for inference.
+We used the following services: Compute Engine, Bucket, Container Registry, Build and Run. Compute Engine is a google cloud service that enables us to create and run virtual machines on Google's infrastructure. Bucket is used as storage space for the project. Container registry is used to store images that we create. Cloud build is used to build the images after we push changes to the main branch of our github repository. Cloud Run is used to run our FastAPI application for inference.
 
 ### Question 18
 
@@ -410,7 +411,7 @@ We used the following services: Compute Engine, Bucket, Container Registry, Buil
 >
 > Answer:
 
-For the deployment of our model we wrapped it into an application using FastAPI. First, we tried serving the application locally using uvicorn, which worked.  Then, we containerised the application and tried to run the image locally, which also worked. As a last step, we deployed the application to the cloud using Cloud Run. You can access the application throught the following command: "curl -X POST -F "data=@<image/path>" https://brain-scan-eval-xm27t4qwiq-lz.a.run.app/infer/". In the json response you get, the key "tumor" shows if the image you sent showcases a brain with a tumor (True) or not (False).
+For the deployment of our model we wrapped it into an application using FastAPI. First, we tried serving the application locally using uvicorn, which worked.  Then, we containerised the application and tried to run the image locally, which also worked. As a last step, we deployed the application to the cloud using Cloud Run. You can access the application through the following command: "curl -X POST -F "data=@<image/path>" https://brain-scan-eval-xm27t4qwiq-lz.a.run.app/infer/". In the json response you get, the key "tumor" shows if the image you sent showcases a brain with a tumor (True) or not (False).
 
 ### Question 23
 
