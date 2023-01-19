@@ -55,7 +55,7 @@ def train(config):
     wandb_logger.experiment.config.update(config)
 
     if config.hyperparameters.checkpoint_path:
-        save_folder = config.data.bucket + "/" + str(config.experiment_id)
+        save_folder = config.data.bucket
         checkpoint_callback = ModelCheckpoint(
             dirpath=save_folder,
             monitor="validation_loss",
