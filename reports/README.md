@@ -238,7 +238,7 @@ Throughout our project we relied heavily on both branches and PRs. We created br
 >
 > Answer:
 
---- question 10 fill here ---
+To manage the data we used for this project, we used DVC. It allowed us to store the data remotely in an efficient way, and then retrieve it by pulling it from the remote storage on Google Cloud Storage. Generally, DVC also allows for data versioning, which is an interesting and essential aspect to include in a MLOps project in case the data changes or one processes the data differently over time. Then having different versions of the data allows you to clearly define what version of data is being used. Hence, if we wanted to process our data differently to see how this given processing would affect the model performance, then we would not have to get rid of the original version (v1.0), but instead we would be able to create a data v2.0. The same also applies in cases of data drift, where new data can then be added to another version to keep both the original and the improved data.
 
 ### Question 11
 
@@ -254,7 +254,7 @@ Throughout our project we relied heavily on both branches and PRs. We created br
 >
 > Answer:
 
---- question 11 fill here ---
+The continuous CI of this project can be considered divided into 2 aspects: one aspect that is relevant before submitting code to the Github repository, and one that is relevant when code is submitted to the repository. The first is applied as a pre-commit hook that checks a commit on a branch for a specified range of tests that makes sure the code committed is of the desired form. Hereby, we define pre-commit hooks that concerns linting and a common code structure, these hooks can be seen [here](https://github.com/GustavHansen99/project_mlops/blob/main/.pre-commit-config.yaml). The other part of our CI is based on Github actions that runs unittests of the code. Here, we assume that the code has already been through pre-commit hooks, and linting is thus not necessary. Thus, we define a series of tests that the code will be tested on before being able to merge with the repository. This part of the CI is tested on both ubuntu and MacOS operating systems as well as two different python versions to ensure that the code works in multiple settings. Moreover, we make use of caching to counter the fact that github actions will destroy every downloaded package when the workflow has been executed. An example of a triggered workflow file can be seen here: [link to file](https://github.com/GustavHansen99/project_mlops/blob/main/.github/workflows/tests.yml). In this file, we conduct our unittesting as well as report the code coverage hereof, which is set up using codecov integration.
 
 ## Running code and tracking experiments
 
