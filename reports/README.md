@@ -367,7 +367,7 @@ We used the following services: Compute Engine, Bucket, Container Registry, Buil
 >
 > Answer:
 
---- question 18 fill here ---
+We used Compute Engine to train our model. We used an instance with the following hardware: n1-standard-4 machine with 1 V100 GPU. On this machine we run a custom contrainer: trainer-final4. The way we utilized this machine was the following: after we pushed our code on the main branch on github, an image was created automatically on the Cloud registry. Afterwards, these images are used to run the container and train the model with different configurations, which are scecified through some configuration files.
 
 ### Question 19
 
