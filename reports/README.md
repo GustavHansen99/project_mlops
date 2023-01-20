@@ -56,15 +56,15 @@ end of the project.
 * [X] Create the initial file structure using cookiecutter
 * [X] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
 * [X] Add a model file and a training script and get that running
-* [ ] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
+* [X] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
 * [X] Remember to comply with good coding practices (`pep8`) while doing the project
-* [ ] Do a bit of code typing and remember to document essential parts of your code
+* [X] Do a bit of code typing and remember to document essential parts of your code
 * [X] Setup version control for your data or part of your data
 * [X] Construct one or multiple docker files for your code
 * [X] Build the docker files locally and make sure they work as intended
 * [X] Write one or multiple configurations files for your experiments
 * [X] Used Hydra to load the configurations and manage your hyperparameters
-* [ ] When you have something that works somewhat, remember at some point to do some profiling and see if
+* [X] When you have something that works somewhat, remember at some point to do some profiling and see if
       you can optimize your code
 * [X] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
@@ -78,10 +78,10 @@ end of the project.
 * [X] Get some continuous integration running on the github repository
 * [X] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [X] Create a trigger workflow for automatically building your docker images
-* [ ] Get your model training in GCP using either the Engine or Vertex AI
-* [ ] Create a FastAPI application that can do inference using your model
+* [X] Get your model training in GCP using either the Engine or Vertex AI
+* [X] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
-* [ ] Deploy your model in GCP using either Functions or Run as the backend
+* [X] Deploy your model in GCP using either Functions or Run as the backend
 
 ### Week 3
 
@@ -94,9 +94,9 @@ end of the project.
 
 ### Additional
 
-* [ ] Revisit your initial project description. Did the project turn out as you wanted?
-* [ ] Make sure all group members have a understanding about all parts of the project
-* [ ] Uploaded all your code to github
+* [X] Revisit your initial project description. Did the project turn out as you wanted?
+* [X] Make sure all group members have a understanding about all parts of the project
+* [X] Uploaded all your code to github
 
 ## Group information
 
@@ -163,7 +163,7 @@ end of the project.
 > *experiments.*
 > Answer:
 
-We have removed the folders: docs, models, notebooks and references since ...
+Based on the cookiecutter template we have primarily written code in the `src`-folder, and specifically the `src/models` and `src/data` have been filled out extensively. We have removed the folders: `docs`, `models`, `notebooks` and `references` since we did not use any of the intended template from these folders, and hence they were considered to confuse more than benefit. Moreover, we have added a series of folders that are relevant for this project: `.dvc` (dvc generated files), `.github` (github workflow files), `app` (code used to construct the app using FastAPI to do inference), `config` (configuration files for inference, training, and evaluation), `docker` (dockerfiles), `scripts` (bash training script that is called on runtime from our training dockerfile), and lastly `tests` (the unittests we have conducted).
 
 ### Question 6
 
@@ -174,7 +174,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 6 fill here ---
+We agreed on writing code by adhering to the pep8 convention in order to ensure that the code format were following the same structure across the group. To ensure code quality and readability we also agreed on writing clear and commented code where necessary. Seen in hindsight, we could have been more thorough in commenting the code, which would make it easier to debug and make changes in the future.
 
 ## Version control
 
@@ -305,7 +305,8 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
---- question 14 fill here ---
+As seen in [this figure](figures/project_wandb.png), we have used W&B to track our experiments for this project. In this figure, we show a series of some of the experiments that we have tracked using W&B, and from this we have chosen to monitor metrics such as training loss, training accuracy, validation loss, validation accuracy. From this, we clearly observe a tendency in our experiments that the pre-trained model we use contain weights that make it start at a preferable initial state (compared to starting from scratch) since most experiments even in the beginning seem to perform fairly acceptable. Hence using W&B we are able to get a clear overview of how our experiments turn out and easily compare the logged metrics across experiments as well.
+An aspect of W&B that we did not utilize for this project is that it is possible to log other things than numeric metrics, such as images. Since our project uses images as its data, it would have been interesting to log some of the training data and the predicted class in order for us to see the model improve over time. However, as discussed, we chose to focus on the more classic performance metrics for training and evaluating models.
 
 ### Question 15
 
@@ -320,7 +321,7 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
---- question 15 fill here ---
+For this project we have made extensive use of Docker and the strengths it provide us to develop containerized code generalizable to other machines. We have developed several docker images, where especially two are interesting: one for training the model, and one for deployment using FastAPI. After building the images running the them is once again based on the parameters specified in our config files, meaning that for example to run the training docker image locally is done by `docker run trainer_latest`, does not require extra argparsed arguments due to it all being represented in the config file. Running the training image on the cloud is done by `docker run --rm -it --shm-size=8G --gpus all --device /dev/nvidiactl --device /dev/nvidia0 gcr.io/dtumlops-project-group-55/trainer:latest`. [Link to docker file](https://github.com/GustavHansen99/project_mlops/blob/report_writing/docker/trainer.dockerfile).
 
 ### Question 16
 
@@ -335,7 +336,7 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
---- question 16 fill here ---
+When encountering bugs each group member handled the approach to solve it differently. Some of us primarily solved the bugs using the built-in python debugger, while others used the debugger from VSCode. In this way, we were able to solve the appearing bugs and write working code. We also tried doing a single profiling run on the forward pass of our model which showed that in the beginning our data was not stored as tensors which was hence suboptimal considering performance.
 
 ## Working in the cloud
 
@@ -352,7 +353,7 @@ In order to ensure reproducible experiments, we made use of config files. Whenev
 >
 > Answer:
 
-We used the following services: Compute Engine, Bucket, Container Registry, Build and Run. Compute Engine is a google cloud service that enables us to create and run virtual machines on Google's infrastructure. Bucket is used as storage space for the project. Container registry is used to store images that we create. Cloud build is used to build the images after we push changes to the main branch of our github repository. Cloud Run is used to run  our FastAPI application for inference.
+We used the following services: Compute Engine, Bucket, Container Registry, Build and Run. Compute Engine is a google cloud service that enables us to create and run virtual machines on Google's infrastructure. Bucket is used as storage space for the project. Container registry is used to store images that we create. Cloud build is used to build the images after we push changes to the main branch of our github repository. Cloud Run is used to run our FastAPI application for inference.
 
 ### Question 18
 
@@ -410,7 +411,7 @@ We used Compute Engine to train our model. We used an instance with the followin
 >
 > Answer:
 
-For the deployment of our model we wrapped it into an application using FastAPI. First, we tried serving the application locally using uvicorn, which worked.  Then, we containerised the application and tried to run the image locally, which also worked. As a last step, we deployed the application to the cloud using Cloud Run. You can access the application throught the following command: "curl -X POST -F "data=@<image/path>" https://brain-scan-eval-xm27t4qwiq-lz.a.run.app/infer/". In the json response you get, the key "tumor" shows if the image you sent showcases a brain with a tumor (True) or not (False).
+For the deployment of our model we wrapped it into an application using FastAPI. First, we tried serving the application locally using uvicorn, which worked.  Then, we containerised the application and tried to run the image locally, which also worked. As a last step, we deployed the application to the cloud using Cloud Run. You can access the application through the following command: "curl -X POST -F "data=@<image/path>" https://brain-scan-eval-xm27t4qwiq-lz.a.run.app/infer/". In the json response you get, the key "tumor" shows if the image you sent showcases a brain with a tumor (True) or not (False).
 
 ### Question 23
 

@@ -1,6 +1,9 @@
+import glob
 import os
+from typing import Any, Dict
 
 import pytorch_lightning as pl
+from google.cloud import storage
 from model import EfficientNet
 from omegaconf import OmegaConf
 from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
@@ -10,8 +13,22 @@ from torchvision import transforms
 
 from src.data.dataset import BTDataset
 
+BUCKET_NAME = "artifacts_group_55"
+SECRET_FOLDER = "secrets"
 
-def train(config):
+
+def _push_model_gcloud() -> None:
+    file = glob.glob("*.ckpt")
+    file = file[0]
+    client = storage.Client.from_service_account_json(
+        os.path.join(SECRET_FOLDER, "secret.json")
+    )
+    bucket = client.get_bucket(BUCKET_NAME)
+    blob = bucket.blob(file)
+    blob.upload_from_filename(file)
+
+
+def train(config: Dict[Any, Any]) -> None:
     # Initialize model and dataloader
     model = EfficientNet(
         lr=config.hyperparameters.learning_rate,
@@ -55,9 +72,8 @@ def train(config):
     wandb_logger.experiment.config.update(config)
 
     if config.hyperparameters.checkpoint_path:
-        save_folder = config.data.bucket + "/" + str(config.experiment_id)
         checkpoint_callback = ModelCheckpoint(
-            dirpath=save_folder,
+            dirpath=os.getcwd(),
             monitor="validation_loss",
             mode="min",
         )
@@ -93,6 +109,7 @@ def train(config):
 
     # Training
     trainer.fit(model, train_set, validation_set)
+    _push_model_gcloud()
 
 
 if __name__ == "__main__":

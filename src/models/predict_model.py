@@ -1,4 +1,5 @@
 import os
+from typing import Any, Dict
 
 import pytorch_lightning as pl
 from model import EfficientNet
@@ -9,7 +10,7 @@ from torchvision import transforms
 from src.data.dataset import BTDataset
 
 
-def evaluate(config):
+def evaluate(config: Dict[Any, Any]) -> None:
     # Load model
     model = EfficientNet.load_from_checkpoint(
         config.hyperparameters.checkpoint_path
