@@ -461,7 +461,7 @@ All three members used less than 20 dollars of credit during development. The mo
 >
 > Answer:
 
-The starting point of the diagram seen in [this figure](figures/project_pipeline.png) is our local setup, where we integrated pytorch lightning, pytorch, W&B, Hydra configuration files, and other small frameworks into our code. Whenever a developer (group member) would want to commit code to the github repository we set up pre-commit hooks that using flake8, black and isort would ensure a common code structure and convention. If the committed code adhered to the standards set out by the pre-commit hooks and is pushed to Github, it auto-triggers a series of github actions that check the code based on unittests. Moreover, if the code succesfully passes the github actions, we trigger a build of the trainer dockerfile using GCP Triggers, which will then build the docker image and store it in the GC Container Registry.
+The starting point of the diagram seen in [this figure](figures/project_pipeline.png) is our local setup, where we integrated pytorch lightning, pytorch, W&B, configuration files, and other small frameworks into our code. Whenever a developer (group member) would want to commit code to the github repository we set up pre-commit hooks that using flake8, black and isort would ensure a common code structure and convention. If the committed code adhered to the standards set out by the pre-commit hooks and is pushed to Github, it auto-triggers a series of github actions that check the code based on unittests. Moreover, if the code succesfully passes the github actions, we trigger a build of the trainer dockerfile using GCP Triggers, which will then build the docker image and store it in the GC Container Registry.
 
 ### Question 26
 
