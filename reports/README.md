@@ -63,7 +63,7 @@ end of the project.
 * [X] Construct one or multiple docker files for your code
 * [X] Build the docker files locally and make sure they work as intended
 * [X] Write one or multiple configurations files for your experiments
-* [X] Used Hydra to load the configurations and manage your hyperparameters
+* [ ] Used Hydra to load the configurations and manage your hyperparameters
 * [X] When you have something that works somewhat, remember at some point to do some profiling and see if
       you can optimize your code
 * [X] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
