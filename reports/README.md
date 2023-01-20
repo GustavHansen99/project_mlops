@@ -56,15 +56,15 @@ end of the project.
 * [X] Create the initial file structure using cookiecutter
 * [X] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
 * [X] Add a model file and a training script and get that running
-* [ ] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
+* [X] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
 * [X] Remember to comply with good coding practices (`pep8`) while doing the project
-* [ ] Do a bit of code typing and remember to document essential parts of your code
+* [X] Do a bit of code typing and remember to document essential parts of your code
 * [X] Setup version control for your data or part of your data
 * [X] Construct one or multiple docker files for your code
 * [X] Build the docker files locally and make sure they work as intended
 * [X] Write one or multiple configurations files for your experiments
-* [X] Used Hydra to load the configurations and manage your hyperparameters
-* [ ] When you have something that works somewhat, remember at some point to do some profiling and see if
+* [ ] Used Hydra to load the configurations and manage your hyperparameters
+* [X] When you have something that works somewhat, remember at some point to do some profiling and see if
       you can optimize your code
 * [X] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
@@ -78,10 +78,10 @@ end of the project.
 * [X] Get some continuous integration running on the github repository
 * [X] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [X] Create a trigger workflow for automatically building your docker images
-* [ ] Get your model training in GCP using either the Engine or Vertex AI
-* [ ] Create a FastAPI application that can do inference using your model
+* [X] Get your model training in GCP using either the Engine or Vertex AI
+* [X] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
-* [ ] Deploy your model in GCP using either Functions or Run as the backend
+* [X] Deploy your model in GCP using either Functions or Run as the backend
 
 ### Week 3
 
@@ -94,9 +94,9 @@ end of the project.
 
 ### Additional
 
-* [ ] Revisit your initial project description. Did the project turn out as you wanted?
-* [ ] Make sure all group members have a understanding about all parts of the project
-* [ ] Uploaded all your code to github
+* [X] Revisit your initial project description. Did the project turn out as you wanted?
+* [X] Make sure all group members have a understanding about all parts of the project
+* [X] Uploaded all your code to github
 
 ## Group information
 
@@ -129,7 +129,7 @@ end of the project.
 >
 > Answer:
 
---- question 3 fill here ---
+For this project we used the third-party framework <a href="https://github.com/rwightman/pytorch-image-models" target="_blank">Pytorch Image Models</a> to use one of the models from the framework with pretrained weights to complete the task, and further further train the weights with our own dataset in order to get better accuracy for our task. To do this, we use the <a href="https://huggingface.co/docs/timm/models/efficientnet" target="_blank">EfficientNet</a> model on a <a href="https://www.kaggle.com/datasets/preetviradiya/brian-tumor-dataset" target="_blank">Brain tumor dataset</a>. We then used the functionality of pytorch lightning and pytorch to do model setup, as well as training and evaluation hereof.
 
 ## Coding environment
 
@@ -148,7 +148,7 @@ end of the project.
 >
 > Answer:
 
---- question 4 fill here ---
+To manage the dependencies of our project we used a series of requirements files that are relevant to succesfully use our code. These requirements were auto-generated as lists of dependencies using the pipreqs framework that construct a txt file based on the python code in the specified folders. In this way, only the necessary packages from our environments were placed in the list of dependencies. To get a complete copy of our development environment, one would therefore have to do first clone our repository, and then pip install the requirements-files (which also installs the code as a package using the `-e`-flag).
 
 ### Question 5
 
@@ -163,7 +163,7 @@ end of the project.
 > *experiments.*
 > Answer:
 
-We have removed the folders: docs, models, notebooks and references since ...
+Based on the cookiecutter template we have primarily written code in the `src`-folder, and specifically the `src/models` and `src/data` have been filled out extensively. We have removed the folders: `docs`, `models`, `notebooks` and `references` since we did not use any of the intended template from these folders, and hence they were considered to confuse more than benefit. Moreover, we have added a series of folders that are relevant for this project: `.dvc` (dvc generated files), `.github` (github workflow files), `app` (code used to construct the app using FastAPI to do inference), `config` (configuration files for inference, training, and evaluation), `docker` (dockerfiles), `scripts` (bash training script that is called on runtime from our training dockerfile), and lastly `tests` (the unittests we have conducted).
 
 ### Question 6
 
@@ -174,7 +174,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 6 fill here ---
+We agreed on writing code by adhering to the pep8 convention in order to ensure that the code format were following the same structure across the group. To ensure code quality and readability we also agreed on writing clear and commented code where necessary. Seen in hindsight, we could have been more thorough in commenting the code, which would make it easier to debug and make changes in the future.
 
 ## Version control
 
@@ -193,7 +193,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 7 fill here ---
+In total we have implemented 3 tests. Specifically, we conduct tests related to our data, model and training. Primarily we are testing that the data collection and transformation works as intended, that the model produces the expected output given an input, and that our training and validation improves the model and that both classes are present. In this way, we try to ensure that the "vulnerable" parts of our developed code does not break when making changes to the various parts.
 
 ### Question 8
 
@@ -208,7 +208,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 8 fill here ---
+The total code coverage of our code is 59%, excluding the test scripts themselves, and including all of our source code. As this percentage reflects, our tests are not exhaustive and does not capture all parts of our code. However, we are aware of this, and one way to the coverage would be to cover more of the training and prediction aspects of our code. We are hence far from 100% coverage of our code, and even if we were it is difficult to completely trust the coverage score as an indicator of the state of a codebase. Code coverage allows us to identify aspects of our code that is not captured by our tests, but does not alone ensure good quality of either the code nor the tests. One still needs to look at the quality of the tests to ensure error free code. Hence, code coverage is only an indicator of the lines that are covered by tests, but not how they are covered.
 
 ### Question 9
 
@@ -223,7 +223,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 9 fill here ---
+Throughout our project we relied heavily on both branches and PRs. We created branches for every part of the project that needed work to easily be able to work independently of each other while not harming the main branch. This also allowed us to independently be responsible for the code we each of us developed. Then in order to merge the created code from a branch, we created a PR with comments highlighting the most essential information needed for the other group members to review the code and approve a merging of the branch and main branch. In this way, it was trivial for us to develop code on the same project by dividing the tasks in branches.
 
 ### Question 10
 
@@ -238,7 +238,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 10 fill here ---
+To manage the data we used for this project, we used DVC. It allowed us to store the data remotely in an efficient way, and then retrieve it by pulling it from the remote storage on Google Cloud Storage. Generally, DVC also allows for data versioning, which is an interesting and essential aspect to include in a MLOps project in case the data changes or one processes the data differently over time. Then having different versions of the data allows you to clearly define what version of data is being used. Hence, if we wanted to process our data differently to see how this given processing would affect the model performance, then we would not have to get rid of the original version (v1.0), but instead we would be able to create a data v2.0. The same also applies in cases of data drift, where new data can then be added to another version to keep both the original and the improved data.
 
 ### Question 11
 
@@ -254,7 +254,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 11 fill here ---
+The continuous CI of this project can be considered divided into 2 aspects: one aspect that is relevant before submitting code to the Github repository, and one that is relevant when code is submitted to the repository. The first is applied as a pre-commit hook that checks a commit on a branch for a specified range of tests that makes sure the code committed is of the desired form. Hereby, we define pre-commit hooks that concerns linting and a common code structure, these hooks can be seen [here](https://github.com/GustavHansen99/project_mlops/blob/main/.pre-commit-config.yaml). The other part of our CI is based on Github actions that runs unittests of the code. Here, we assume that the code has already been through pre-commit hooks, and linting is thus not necessary. Thus, we define a series of tests that the code will be tested on before being able to merge with the repository. This part of the CI is tested on both ubuntu and MacOS operating systems as well as two different python versions to ensure that the code works in multiple settings. Moreover, we make use of caching to counter the fact that github actions will destroy every downloaded package when the workflow has been executed. An example of a triggered workflow file can be seen here: [link to file](https://github.com/GustavHansen99/project_mlops/blob/main/.github/workflows/tests.yml). In this file, we conduct our unittesting as well as report the code coverage hereof, which is set up using codecov integration.
 
 ## Running code and tracking experiments
 
@@ -273,7 +273,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 12 fill here ---
+To configure experiments we made use of configuration files containing the relevant hyperparameters and information needed. For example, we define a configuration for training that contains the epochs, learning rate, batch size, etc. and use this to keep track of our experiment variables. Hence running an experiment would be as simple as defining the respective configuration file in the [config](https://github.com/GustavHansen99/project_mlops/tree/main/config) folder, and running `python script.py`. We considered using argparser, however this approach lacks the ability to store and keep track more accurately, and one might lose essential information hereof.
 
 ### Question 13
 
@@ -288,7 +288,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 13 fill here ---
+In order to ensure reproducible experiments, we made use of config files. Whenever an experiment is run the respective configuration file is used as the variable values. Based on these values the script is run and if it a training script, we not only log the performance of the experiment, but also a series of files related to reproducibility: all configuration values, a requirements.txt file, and a log showing the model size and parameters. To reproduce an experiment, it is therefore fairly easy to setup an experiment with an identical configuration file, and achieve the reported results. By using a random seed, one would be able to ensure that randomness in weight initialization for example, does not alter the results between diffrent experiments.
 
 ### Question 14
 
@@ -305,7 +305,8 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 14 fill here ---
+As seen in [this figure](figures/project_wandb.png), we have used W&B to track our experiments for this project. In this figure, we show a series of some of the experiments that we have tracked using W&B, and from this we have chosen to monitor metrics such as training loss, training accuracy, validation loss, validation accuracy. From this, we clearly observe a tendency in our experiments that the pre-trained model we use contain weights that make it start at a preferable initial state (compared to starting from scratch) since most experiments even in the beginning seem to perform fairly acceptable. Hence using W&B we are able to get a clear overview of how our experiments turn out and easily compare the logged metrics across experiments as well.
+An aspect of W&B that we did not utilize for this project is that it is possible to log other things than numeric metrics, such as images. Since our project uses images as its data, it would have been interesting to log some of the training data and the predicted class in order for us to see the model improve over time. However, as discussed, we chose to focus on the more classic performance metrics for training and evaluating models.
 
 ### Question 15
 
@@ -320,7 +321,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 15 fill here ---
+For this project we have made extensive use of Docker and the strengths it provide us to develop containerized code generalizable to other machines. We have developed several docker images, where especially two are interesting: one for training the model, and one for deployment using FastAPI. After building the images running the them is once again based on the parameters specified in our config files, meaning that for example to run the training docker image locally is done by `docker run trainer_latest`, does not require extra argparsed arguments due to it all being represented in the config file. Running the training image on the cloud is done by `docker run --rm -it --shm-size=8G --gpus all --device /dev/nvidiactl --device /dev/nvidia0 gcr.io/dtumlops-project-group-55/trainer:latest`. [Link to docker file](https://github.com/GustavHansen99/project_mlops/blob/report_writing/docker/trainer.dockerfile).
 
 ### Question 16
 
@@ -335,7 +336,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 16 fill here ---
+When encountering bugs each group member handled the approach to solve it differently. Some of us primarily solved the bugs using the built-in python debugger, while others used the debugger from VSCode. In this way, we were able to solve the appearing bugs and write working code. We also tried doing a single profiling run on the forward pass of our model which showed that in the beginning our data was not stored as tensors which was hence suboptimal considering performance.
 
 ## Working in the cloud
 
@@ -352,7 +353,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 17 fill here ---
+We used the following services: Compute Engine, Bucket, Container Registry, Build and Run. Compute Engine is a google cloud service that enables us to create and run virtual machines on Google's infrastructure. Bucket is used as storage space for the project. Container registry is used to store images that we create. Cloud build is used to build the images after we push changes to the main branch of our github repository. Cloud Run is used to run our FastAPI application for inference.
 
 ### Question 18
 
@@ -367,7 +368,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 18 fill here ---
+We used Compute Engine to train our model. We used an instance with the following hardware: n1-standard-4 machine with 1 V100 GPU. On this machine we run a custom contrainer: trainer-final4. The way we utilized this machine was the following: after we pushed our code on the main branch on github, an image was created automatically on the Cloud registry. Afterwards, these images are used to run the container and train the model with different configurations, which are scecified through some configuration files.
 
 ### Question 19
 
@@ -376,7 +377,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 19 fill here ---
+[this figure](figures/bucket55.png)
 
 ### Question 20
 
@@ -385,7 +386,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 20 fill here ---
+[this figure](figures/registry55.png)
 
 ### Question 21
 
@@ -394,7 +395,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 21 fill here ---
+[this figure](figures/build55.png)
 
 ### Question 22
 
@@ -410,7 +411,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 22 fill here ---
+For the deployment of our model we wrapped it into an application using FastAPI. First, we tried serving the application locally using uvicorn, which worked.  Then, we containerised the application and tried to run the image locally, which also worked. As a last step, we deployed the application to the cloud using Cloud Run. You can access the application through the following command: "curl -X POST -F "data=@<image/path>" https://brain-scan-eval-xm27t4qwiq-lz.a.run.app/infer/". In the json response you get, the key "tumor" shows if the image you sent showcases a brain with a tumor (True) or not (False).
 
 ### Question 23
 
@@ -425,7 +426,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 23 fill here ---
+We did not manage to implement monitoring during our development cycle. We would like to have monitoring implemented so that, over time, we could collect information about how well our application behaved. This can include identification of problems of our application (errors and logs) and performance issues, such as speed during high traffic periods. Also, we could collect more datapoints for further training and generalization of our model.
 
 ### Question 24
 
@@ -439,7 +440,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 24 fill here ---
+All three members used less than 20 dollars of credit during development. The most expensive service was Compute Engine since it used a VM with GPU that costs much more than everything else.
 
 ## Overall discussion of project
 
@@ -460,7 +461,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 25 fill here ---
+The starting point of the diagram seen in [this figure](figures/project_pipeline.png) is our local setup, where we integrated pytorch lightning, pytorch, W&B, configuration files, and other small frameworks into our code. Whenever a developer (group member) would want to commit code to the github repository we set up pre-commit hooks that using flake8, black and isort would ensure a common code structure and convention. If the committed code adhered to the standards set out by the pre-commit hooks and is pushed to Github, it auto-triggers a series of github actions that check the code based on unittests. Moreover, if the code succesfully passes the github actions, we trigger a build of the trainer dockerfile using GCP Triggers, which will then build the docker image and store it in the GC Container Registry. From there the diagram shows that we run experiments using configuration files and track the performance using W&B. We run experiments using GC Compute Enginge and deploy the best model using FastAPI. If we had more time we would have looked into monitoring of our deployed - specifically data drift monitoring using evidently and system monitoring using OpenTelemetry.
 
 ### Question 26
 
@@ -474,7 +475,7 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 26 fill here ---
+The biggest challenge in the project was working with the cloud. Choosing the correct machine to train our model was problematic since we needed very specific requirements. This was due to the fact that the model we chose could not train fast enough on a CPU and we needed to choose a machine with at least a 4 core CPU and an nVidia V100 GPU. Also, we struggled a bit when we tried to give the appropriate credentials to the container that was used for training. This was needed so that the container would have access to the bucket that the data would be pulled from. Furthermore, specifying exactly the requirements and building the images was a bit of a hardle, due to Pytorch's versioning for different OS configurations.
 
 ### Question 27
 
@@ -491,4 +492,10 @@ We have removed the folders: docs, models, notebooks and references since ...
 >
 > Answer:
 
---- question 27 fill here ---
+Student s212893 was in charge of developing the model, data creation and deployment of the model on the cloud.
+
+Student s223084 was responsible of setting up the initial cookie cutter project, version control, wandb integration and part of CI implementation.
+
+Student s213685 was responsible of adding the typing, configuration files, creating the docker images and setting up the cloud.
+
+Even though there is a clear segmentation of the tasks to the members, all contributed to other tasks as well as training.
