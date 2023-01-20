@@ -1,4 +1,5 @@
 from http import HTTPStatus
+from typing import Any, Dict
 
 import torch
 import uvicorn
@@ -30,7 +31,7 @@ transform = transforms.Compose(
 
 
 @app.get("/")
-def root():
+def root() -> HTMLResponse:
     """Health check. Brain scan evaluation api live."""
     html_content = """
         <html>
@@ -44,7 +45,7 @@ def root():
 
 
 @app.post("/infer/")
-async def cv_model(data: UploadFile = File(...)):
+async def cv_model(data: UploadFile = File(...)) -> Dict[str, Any]:
     with open("image.jpg", "wb") as image:
         content = await data.read()
         image.write(content)

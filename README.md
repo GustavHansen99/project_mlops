@@ -27,7 +27,7 @@ The intention is to use a model with pretrained weights and train it on the data
 ## Start docker container
 
 ```
-docker run --rm -it --shm-size=8G --gpus all --device /dev/nvidiactl --device /dev/nvidia0 gcr.io/dtumlops-project-group-55/trainer:latest
+docker run --rm -it --shm-size=8G --gpus all --device /dev/nvidiactl --device /dev/nvidia0 -e WANDB_API_KEY=$WANDB_API_KEY -v secrets:secrets gcr.io/dtumlops-project-group-55/trainer:latest
 ```
 
 ---
