@@ -475,7 +475,7 @@ The starting point of the diagram seen in [this figure](figures/project_pipeline
 >
 > Answer:
 
---- question 26 fill here ---
+The biggest challenge in the project was working with the cloud. Choosing the correct machine to train our model was problematic since we needed very specific requirements. This was due to the fact that the model we chose could not train fast enough on a CPU and we needed to choose a machine with at least a 4 core CPU and an nVidia V100 GPU. Also, we struggled a bit when we tried to give the appropriate credentials to the container that was used for training. This was needed so that the container would have access to the bucket that the data would be pulled from. Furthermore, specifying exactly the requirements and building the images was a bit of a hardle, due to Pytorch's versioning for different OS configurations.
 
 ### Question 27
 
@@ -492,4 +492,10 @@ The starting point of the diagram seen in [this figure](figures/project_pipeline
 >
 > Answer:
 
---- question 27 fill here ---
+Student s212893 was in charge of developing the model, data creation and deployment of the model on the cloud.
+
+Student s223084 was responsible of setting up the initial cookie cutter project, version control, wandb integration and part of CI implementation.
+
+Student s213685 was responsible of adding the typing, configuration files, creating the docker images and setting up the cloud.
+
+Even though there is a clear segmentation of the tasks to the members, all contributed to other tasks as well as training.
