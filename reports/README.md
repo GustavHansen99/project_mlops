@@ -129,7 +129,7 @@ end of the project.
 >
 > Answer:
 
---- question 3 fill here ---
+For this project we used the third-party framework <a href="https://github.com/rwightman/pytorch-image-models" target="_blank">Pytorch Image Models</a> to use one of the models from the framework with pretrained weights to complete the task, and further further train the weights with our own dataset in order to get better accuracy for our task. To do this, we use the <a href="https://huggingface.co/docs/timm/models/efficientnet" target="_blank">EfficientNet</a> model on a <a href="https://www.kaggle.com/datasets/preetviradiya/brian-tumor-dataset" target="_blank">Brain tumor dataset</a>. We then used the functionality of pytorch lightning and pytorch to do model setup, as well as training and evaluation hereof.
 
 ## Coding environment
 
@@ -148,7 +148,7 @@ end of the project.
 >
 > Answer:
 
---- question 4 fill here ---
+To manage the dependencies of our project we used a series of requirements files that are relevant to succesfully use our code. These requirements were auto-generated as lists of dependencies using the pipreqs framework that construct a txt file based on the python code in the specified folders. In this way, only the necessary packages from our environments were placed in the list of dependencies. To get a complete copy of our development environment, one would therefore have to do first clone our repository, and then pip install the requirements-files (which also installs the code as a package using the `-e`-flag).
 
 ### Question 5
 
