@@ -461,7 +461,7 @@ All three members used less than 20 dollars of credit during development. The mo
 >
 > Answer:
 
---- question 25 fill here ---
+[this figure](figures/project_pipeline.png)
 
 ### Question 26
 
